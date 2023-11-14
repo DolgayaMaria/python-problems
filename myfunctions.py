@@ -22,7 +22,7 @@ def  mysqrt(x):
         else:
             min=mid
         mid=(min+max)/2
-    return mid
+    return round(mid)
 
 # input: angle in decimal degrees
 # output: approximate value of the sine of that angle
@@ -88,7 +88,7 @@ def myarcsin(x):
         else:
             min=mid
         mid=(min+max)/2
-    return mid
+    return round(mid)
 
 # input: string (prompt to user), float (minimum value for input), float (maximum value for input)
 # output: float (user's provided value between minimum and maximum)
