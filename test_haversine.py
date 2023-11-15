@@ -1,36 +1,21 @@
 #test all five functions mysqrt, mycos, myarcsin, mysin and myhaversine individually :)
 from myfunctions import mysqrt, myarcsin, mysin, mycos
 from myhaversine import myhaversine
+from haversine import haversine # for test_myhaversine
 
 
-def test_mysqrt():
-    try:
-        assert mysqrt(0) == 0
-    except AssertionError:
-        print("the squareroot of 0 is 0")
-    try:
-        assert mysqrt(-1) == 0 
-    except AssertionError:
-        print("the squareroot of -1 is 0")
-    try:
-        assert mysqrt(9) == 3
-    except AssertionError:
-        print("the squareroot of 9 is 3")
+def test_mysqrt(): # from the zoom meeting with the professor 
+     tol = 10**-5
+    assert -tol < mysqrt(0) < tol
+    assert -tol < mysqrt(-1) < tol 
+    assert 3-tol < mysqrt(9) < 3 + tol
 
 
 def test_myarcsin():
-    try:
-        assert myarcsin(-2) == -90
-    except AssertionError:
-        print("the arcsin of -2 is -90")
-    try:
-        assert myarcsin(2) == 90
-    except AssertionError:
-        print("the arcsin of 2 is 90")
-    try:
-        assert myarcsin(0.5) == 30
-    except AssertionError:
-        print("the arcsin of 0.5 is 30")
+    tol = 10**-5
+    assert myarcsin(-2) == -90
+    assert myarcsin(2) == 90
+    assert 30 - tol < myarcsin(0.5) < 30 + tol
 
 
 def test_mysin():
@@ -44,11 +29,8 @@ def test_mycos():
 
 
 def test_myhaversine(): 
-    try:
-        assert myhaversine((0, 0), (0, 0)) == 0
-    except AssertionError:
-        print("the haversine of 0 is 0 ")
-    try:
-        assert myhaversine((90, 180), (90, 180)) == 0
-    except AssertionError:
-        print("the haversine of 90 and 180 is 0 ")
+    tol = 10**-1
+    assert -tol<myhaversine((0, 0), (0, 0))<tol
+    assert -tol<myhaversine((90, 180), (90, 180))<tol
+    # check the distance between Paris and Lyon 
+    assert -tol+haversine((45.7597, 4.8422), (48.8567, 2.3508))< myhaversine((45.7597, 4.8422), (48.8567, 2.3508))< haversine((45.7597, 4.8422), (48.8567, 2.3508))
