@@ -101,7 +101,7 @@ def get_coordinates(N: int, option: str) -> dict:
     
     d = {}
 
-    for items in range(1, N + 1): # why not in range(N)
+    for _ in range(N): # why not in range(N)
         name = input("Point name: ")
         if option == "u": 
                 lon = get_decimal("Enter value between -9.2 and -9.1: ", lon_min, lon_max)
